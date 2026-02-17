@@ -1,0 +1,24 @@
+# Core Dependencies
+python-dotenv>=1.0.0          # Environment variable management
+requests>=2.31.0              # HTTP requests for API calls
+
+# Google Services
+google-auth>=2.23.0           # Google authentication
+google-auth-oauthlib>=1.1.0   # OAuth2 for Google APIs
+google-auth-httplib2>=0.1.1   # Google HTTP client
+google-api-python-client>=2.100.0  # Google API client library
+
+# Data Processing
+pandas>=2.1.0                 # Data manipulation
+openpyxl>=3.1.0              # Excel file handling
+
+# Presentation & Charts
+python-pptx>=0.6.23          # PowerPoint generation
+matplotlib>=3.8.0             # Chart and graph generation
+
+# Web Scraping (optional, add if needed)
+# beautifulsoup4>=4.12.0
+# selenium>=4.15.0
+
+# Utilities
+pyyaml>=6.0.1                # YAML parsing

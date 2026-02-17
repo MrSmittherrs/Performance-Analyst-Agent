@@ -1,0 +1,18 @@
+{
+  "mcpServers": {
+    "filesystem": {
+      "command": "cmd",
+      "args": [
+        "/c",
+        "docker",
+        "run",
+        "-i",
+        "--rm",
+        "-v",
+        "C:\\Users\\ksmith2\\Documents:/documents",
+        "mcp/filesystem",
+        "/documents"
+      ]
+    }
+  }
+}

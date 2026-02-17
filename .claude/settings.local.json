@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:setgetweb.com)",
+      "mcp__MCP_DOCKER__read_file"
+    ]
+  }
+}
