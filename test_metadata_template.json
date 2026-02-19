@@ -1,0 +1,84 @@
+{
+  "_comment": "Test Metadata Configuration - UJ Student Portal Stress Test Nov 2024",
+
+  "test_metadata": {
+    "client_name": "University of Johannesburg - UJ Student Portal",
+    "test_date": "2024-11-21",
+    "test_scenario_type": "Stress Test",
+    "neoload_project": "uj_project_2025",
+    "neoload_result_id": "result_fd186609-5099-487f-8962-b7857be0a1d2"
+  },
+
+  "test_purpose": {
+    "primary_objective": "Pre-production validation before peak registration period — validate system readiness to handle 250 concurrent students during the live registration window",
+    "business_context": "The University of Johannesburg runs an annual student registration cycle that experiences extreme peak loads. This stress test validates that the UJ Student Portal can sustain performance under maximum expected concurrent user load before the registration window opens.",
+    "success_criteria": "All transactions meet SLA thresholds (P95 < 3000ms, Error Rate < 1%) under 250 concurrent virtual users"
+  },
+
+  "workflows_under_test": {
+    "Registration_New - 2024": {
+      "description": "Full student registration workflow covering login, POPIA consent, personal contact details, address validation, contact persons, proforma statement, document submission, registration verification, payment rules, online payment, academic rules, subject selection, and registration acceptance",
+      "business_criticality": "High",
+      "expected_transaction_count": 20
+    }
+  },
+
+  "test_configuration": {
+    "test_duration_minutes": 68,
+    "test_duration_display": "1 hour 8 minutes 36 seconds",
+    "max_virtual_users": 250,
+    "ramp_up_strategy": "Start with 2 users, add 4 users every 15 seconds to a maximum of 250 users",
+    "peak_load_timing": "Peak of 250 users reached approximately 15 minutes into the test (12:39 PM)",
+    "load_profile_description": "Gradual ramp-up to simulate realistic user growth during peak student registration period",
+    "start_time": "2024-11-21 12:24:18",
+    "end_time": "2024-11-21 13:32:54"
+  },
+
+  "testing_tools": {
+    "neoload_version": "NeoLoad Enterprise 2024.1.1",
+    "load_generator": "localhost:7100",
+    "monitoring_tools": ["NeoLoad built-in performance counters"],
+    "test_environment": "Pre-production environment"
+  },
+
+  "sla_thresholds": {
+    "p95_response_time_ms": 3000,
+    "max_response_time_ms": 10000,
+    "error_rate_percent": 1.0,
+    "throughput_min_rps": 10,
+    "notes": "Industry-standard SLA thresholds for web applications"
+  },
+
+  "infrastructure": {
+    "load_generator": [
+      {
+        "name": "localhost:7100",
+        "role": "NeoLoad Load Generator",
+        "notes": "Microsoft Hyper-V Network Adapter (eth2)"
+      }
+    ],
+    "notes": "No application server infrastructure monitoring configured for this test run"
+  },
+
+  "known_issues": {
+    "environmental_factors": [
+      "Test conducted with think time of 10,000ms between page interactions to simulate realistic user behaviour"
+    ],
+    "constraints": [
+      "Load generator and controller running on same machine (localhost)"
+    ],
+    "anomalies": [
+      "291 assertion failures concentrated in Subject Selection and Submit Registration steps — likely due to dynamic data validation responses",
+      "Registration Verification step consistently slow (Avg 5.62s) — this is a known query-intensive operation"
+    ]
+  },
+
+  "document_control": {
+    "version": "1.0",
+    "status": "Draft",
+    "author": "Performance Testing Team",
+    "reviewer": "TBC",
+    "approver": "TBC",
+    "distribution": ["UJ Stakeholders", "Development Team", "Infrastructure Team"]
+  }
+}
